@@ -7,7 +7,7 @@
         <ul>
             {% for i in authors %}
                 <li>
-                    <a href="{{ author.get_absolute_url }}">{{ i.name }}</a>
+                    <a href="{% url 'author_detail' i.pk %}">{{ i.name }}</a>
                 </li>
             {% endfor %}
         </ul>

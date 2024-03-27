@@ -11,8 +11,12 @@ def book_list(request):
     books = Book.objects.all()
     return render(request,'library/book_list.html',{'books':books})
 
-def book_detail(request, id):
-    book = get_object_or_404(Book, pk=id)
+def author_list(request):
+    authors = Author.objects.all()
+    return render(request,'library/author_list.html',{'authors':authors})
+
+def book_detail(request, pk):
+    book = get_object_or_404(Book, pk=pk)
     book_detail = {
         'title': book.title,
         'author': book.author,
@@ -22,12 +26,8 @@ def book_detail(request, id):
     }
     return render(request,'library/book_detail.html',context=book_detail)
 
-def author_list(request):
-    authors = Author.objects.all()
-    return render(request,'library/author_list.html',{'authors':authors})
-
-def author_detail(request, id):
-    author = get_object_or_404(Author, pk=id)
+def author_detail(request, pk):
+    author = get_object_or_404(Author, pk=pk)
     author_detail = {
         'name': author.name,
         'dob': author.date_of_birth,
